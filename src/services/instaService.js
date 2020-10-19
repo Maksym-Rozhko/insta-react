@@ -17,5 +17,17 @@ export default class instaService {
         const res = await this.getResourse('/posts/');
         return res;
     }
+
+    getAllPhotos = async () => {
+        const res = await this.getResourse('/posts/');
+        return res.map(this._transformPosts);
+    }
+
+    _transformPosts = (post) => {
+        return {
+            src: post.src,
+            alt: post.alt
+        }
+    }
 }
 //json-server src/posts.json запуск сервера в 2:bash
